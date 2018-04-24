@@ -6,7 +6,6 @@ import com.pingcap.tikv.kv.oracle.Oracle;
 import com.pingcap.tikv.kv.oracle.PdOracle;
 import com.pingcap.tikv.kv.snapshot.TiKvSnapshot;
 import com.pingcap.tikv.kv.txn.TikvTxn;
-import com.pingcap.tikv.region.RegionManager;
 import com.pingcap.tikv.util.BackOffer;
 import com.pingcap.tikv.util.ConcreteBackOffer;
 import java.io.IOException;
@@ -14,11 +13,11 @@ import java.io.IOException;
 public class TiKv implements Kv {
 
   private final Oracle oracle;
-  private final RegionManager.RegionCache regionCache;
+  private final RegionCache regionCache;
 
   public TiKv(PDClient pdClient) {
     this.oracle = new PdOracle(pdClient, java.time.Duration.ofSeconds(10));
-    this.regionCache = new RegionManager.RegionCache(pdClient);
+    this.regionCache = new RegionCache(pdClient);
   }
 
   @Override
@@ -74,5 +73,9 @@ public class TiKv implements Kv {
 
   private TiKvSnapshot newTikvSnapshot(Version version) {
     return null;
+  }
+
+  public RegionCache getRegionCache() {
+    return regionCache;
   }
 }

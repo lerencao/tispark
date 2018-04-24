@@ -3,7 +3,6 @@ package com.pingcap.tikv.kv.snapshot;
 import com.pingcap.tikv.kv.Snapshot;
 import com.pingcap.tikv.kv.TiKv;
 import com.pingcap.tikv.kv.Version;
-import com.pingcap.tikv.kv.txn.TikvTxn;
 import com.pingcap.tikv.kvproto.Kvrpcpb.CommandPri;
 import com.pingcap.tikv.kvproto.Kvrpcpb.IsolationLevel;
 import java.util.Iterator;
@@ -39,7 +38,7 @@ public class TiKvSnapshot implements Snapshot {
 
   @Override
   public byte[] get(byte[] key) {
-
+    store.getRegionCache()
     return new byte[0];
   }
 

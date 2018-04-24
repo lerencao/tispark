@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class Region {
 
-  private final Metapb.Region meta;
+  private Metapb.Region meta;
   private Peer peer;
   private Set<Long> unreachableStores;
 

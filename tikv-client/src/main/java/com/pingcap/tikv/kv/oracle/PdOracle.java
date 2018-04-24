@@ -3,6 +3,7 @@ package com.pingcap.tikv.kv.oracle;
 
 import com.pingcap.tikv.PDClient;
 import com.pingcap.tikv.meta.TiTimestamp;
+import com.pingcap.tikv.util.BackOffer;
 import com.pingcap.tikv.util.ConcreteBackOffer;
 import java.io.IOException;
 import java.time.Duration;
@@ -28,6 +29,12 @@ public class PdOracle implements Oracle {
   public boolean isExpired(long lockTs, long ttl) {
     // TODO: implemnt me
     return false;
+  }
+
+  @Override
+  public long getTsWithRetry(BackOffer bo) {
+    // TODO: implement me
+    return 0;
   }
 
   @Override
